@@ -7,6 +7,52 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+
+        <!--******************************* section menu **********************************************************************-->
+        <Grid Grid.Row="0" Name="Grd_menu">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Name="BTN_carte_du_jour" Content="Carte du jour" HorizontalAlignment="Center" Background="#00CCCB" VerticalAlignment="Center" Width="100" Height="100" Click="BTN_Carte_du_jour_Click"/>
+            <Button Grid.Column="1" Name="BTN_Portevue" Content="Porte-vue" HorizontalAlignment="Center" Background="#00CCCB" VerticalAlignment="Center" Width="100" Height="100" Click="BTN_Portevue_Click"/>
+            <Button Grid.Column="2" Name="BTN_Calendrier" Content="Calendrier" HorizontalAlignment="Center" Background="#00CCCB" VerticalAlignment="Center" Width="100" Height="100" Click="BTN_Calendrier_Click"/>
+            <Button Grid.Column="3" Name="BTN_Info" Content="Info" HorizontalAlignment="Center" Background="#00CCCB" VerticalAlignment="Center" Width="100" Height="100" Click="BTN_Info_Click"/>
+
+        </Grid>
+        <!--******************************* End of section menu **********************************************************************-->
+
+
+        <!--******************************* section container **********************************************************************-->
+        <Grid Grid.Row="1" Name="Grd_container">
         
+        </Grid>
+        <!--******************************* End of section container **********************************************************************-->
+
+
+        <!--******************************* section footer **********************************************************************-->
+        <Grid Grid.Row="2" Name="Grd_Footer">
+
+            <Label Content="Footer" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+        </Grid>
+        <!--******************************* End of section footer **********************************************************************-->
+
+
+
+        <!--<Grid Grid.Row="0" Name="Menu">
+       <Grid.ColumnDefinitions>
+           <ColumnDefinition Width="1*"/>
+           <ColumnDefinition Width="6*"/>
+               <ColumnDefinition Width="1*"/>-->
+
     </Grid>
 </Window>

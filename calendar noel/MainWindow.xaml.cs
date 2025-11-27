@@ -24,5 +24,25 @@ namespace calendar_noel
         {
             InitializeComponent();
         }
+
+        private void BTN_Carte_du_jour_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BTN_Portevue_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BTN_Calendrier_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BTN_Info_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
