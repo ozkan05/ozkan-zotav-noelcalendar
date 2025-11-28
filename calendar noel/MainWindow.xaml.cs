@@ -25,14 +25,16 @@ namespace calendar_noel
         private string genre = "Homme";
         private string theme = "Rouge";
 
-        private List<string> messages = new();
-        private List<string> usedMessages = new();
+        private List<string> messages = new List<string>();
+        private List<string> usedMessages = new List<string>();
 
         private DispatcherTimer snowTimer;
         private DispatcherTimer garlandTimer;
         private Random random = new Random();
 
         private bool garlandState = false;
+
+        public List<string> UsedMessages { get => usedMessages; set => usedMessages = value; }
 
         public MainWindow()
         {
@@ -89,23 +91,23 @@ namespace calendar_noel
 
             messages = File.ReadAllLines(messagesPath).ToList();
             if (File.Exists(usedMessagesPath))
-                usedMessages = File.ReadAllLines(usedMessagesPath).ToList();
+                UsedMessages = File.ReadAllLines(usedMessagesPath).ToList();
         }
 
         private string GetDailyMessage()
         {
-            var libres = messages.Except(usedMessages).ToList();
+            var libres = messages.Except(UsedMessages).ToList();
 
             if (libres.Count == 0)
             {
-                usedMessages.Clear();
+                UsedMessages.Clear();
                 File.WriteAllText(usedMessagesPath, "");
                 libres = messages;
             }
 
             var msg = libres[random.Next(libres.Count)];
-            usedMessages.Add(msg);
-            File.WriteAllLines(usedMessagesPath, usedMessages);
+            UsedMessages.Add(msg);
+            File.WriteAllLines(usedMessagesPath, UsedMessages);
             return msg;
         }
 
@@ -189,7 +191,7 @@ namespace calendar_noel
 
             if (files.Length > 0)
             {
-                img.Source = new BitmapImage(new Uri(Path.GetFullPath(files[random.Next(files.Length)])));
+                img.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath(files[random.Next(files.Length)])));
             }
         }
 
