@@ -128,5 +128,8 @@
   <ItemGroup>
     <Resource Include="Images\image-calendrier-avent-menu.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Music\letitsnow.mp3" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
