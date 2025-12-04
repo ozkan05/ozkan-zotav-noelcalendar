@@ -67,6 +67,9 @@
     <Compile Include="Views\porte-vue_image.xaml.cs">
       <DependentUpon>porte-vue_image.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\prenom.xaml.cs">
+      <DependentUpon>prenom.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\porte-vue_image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\prenom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,7 +136,9 @@
     <Resource Include="Images\image-calendrier-avent-menu.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Music\letitsnow.mp3" />
+    <Content Include="Music\letitsnow.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

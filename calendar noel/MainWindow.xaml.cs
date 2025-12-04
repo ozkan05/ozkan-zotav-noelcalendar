@@ -28,7 +28,7 @@ namespace calendar_noel
         private readonly string messagesPath = "messages.txt";
         private readonly string usedMessagesPath = "used.txt";
         private readonly string imagesFolder = "Images";
-        private MediaPlayer backgroundMusic = new MediaPlayer();
+        private MediaPlayer player  = new MediaPlayer();
 
         // === DONNÉES ===
         private string prenom = "Invité";
@@ -47,6 +47,7 @@ namespace calendar_noel
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
 
             LoadConfig();
             LoadMessages();
@@ -58,7 +59,6 @@ namespace calendar_noel
             AddCandles();
             AddTree3D();
             AddGlowToButtons();
-            JouerMusique();
             
         }
 
@@ -83,29 +83,19 @@ namespace calendar_noel
                 if (l.StartsWith("Theme=")) theme = l.Replace("Theme=", "");
             }
         }
-
- private void JouerMusique()
-{
-     try
-     {
-         backgroundMusic.MediaEnded -= backgroundMusic_MediaEnded;
-         var uri = new Uri("/Music/letitsnow.mp3", UriKind.RelativeOrAbsolute);
-         backgroundMusic.Open(uri);
-         backgroundMusic.Volume = 0.5; // Volume moyen
-         backgroundMusic.MediaEnded += backgroundMusic_MediaEnded;
-         backgroundMusic.Play();
-     }
-     catch (Exception)
-     {
-         // Échec d'ouverture / lecture : ignored pour l'instant (ou logger si nécessaire)
-     }
-}
- 
-private void backgroundMusic_MediaEnded(object sender, EventArgs e)
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+            {
+            // Charger et jouer la musique de fond
+            player.Open(new Uri("Music/letitsnow.mp3", UriKind.Relative));
+            player.MediaEnded += player_MediaEnded;
+            player.Volume = 0.5; // Volume à 50%
+            player.Play();
+        }
+        private void player_MediaEnded(object sender, EventArgs e)
 {
      // Remet au début et relance en boucle
-     backgroundMusic.Position = TimeSpan.Zero;
-     backgroundMusic.Play();
+     player.Position = TimeSpan.Zero;
+     player.Play();
 }
         // ================= MESSAGES =================
         private void LoadMessages()
