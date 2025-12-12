@@ -45,43 +45,62 @@
 
             <!-- Style boutons -->
             <Grid.Resources>
-                <Style TargetType="Button">
+                <Style TargetType="Button" x:Key="ModernChristmasButton">
                     <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
                     <Setter Property="FontSize" Value="16"/>
                     <Setter Property="Margin" Value="10"/>
                     <Setter Property="Width" Value="140"/>
                     <Setter Property="Height" Value="120"/>
                     <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Border CornerRadius="25"
-                                        Background="#228B22"
-                                        BorderBrush="White"
-                                        BorderThickness="4"
+                                <Border CornerRadius="20"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
                                         Padding="10"
                                         SnapsToDevicePixels="True"
-                                        Effect="{StaticResource dropShadow}">
+                                        Effect="{StaticResource dropShadow}"
+                                        Background="{TemplateBinding Background}">
                                     <ContentPresenter HorizontalAlignment="Center"
                                                       VerticalAlignment="Center"/>
                                 </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF4D4D"/>
+                                        <Setter Property="Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect BlurRadius="25"
+                                                                  ShadowDepth="0"
+                                                                  Color="#FFD4AF37"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="#B22222"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </Grid.Resources>
 
-            <Button Grid.Column="0" Name="BTN_carte_du_jour" Content="🎁 Carte du jour" Click="BTN_Carte_du_jour_Click"/>
-            <Button Grid.Column="1" Name="BTN_Portevue" Content="📘 Porte-vue" Click="BTN_Portevue_Click"/>
-            <Button Grid.Column="2" Name="BTN_Calendrier" Content="📅 Calendrier" Click="BTN_Calendrier_Click"/>
-            <Button Grid.Column="3" Name="BTN_Info" Content="❄ Info" Click="BTN_Info_Click"/>
+            <Button Grid.Column="0" Style="{StaticResource ModernChristmasButton}" Name="BTN_carte_du_jour" Content="🎁 Carte du jour" Click="BTN_Carte_du_jour_Click"/>
+            <Button Grid.Column="1" Style="{StaticResource ModernChristmasButton}" Name="BTN_Portevue" Content="📘 Porte-vue" Click="BTN_Portevue_Click"/>
+            <Button Grid.Column="2" Style="{StaticResource ModernChristmasButton}" Name="BTN_Calendrier" Content="📅 Calendrier" Click="BTN_Calendrier_Click"/>
+            <Button Grid.Column="3" Style="{StaticResource ModernChristmasButton}" Name="BTN_Info" Content="❄ Info" Click="BTN_Info_Click"/>
         </Grid>
 
         <!-- 🎅 SECTION CONTAINER -->
         <Grid Grid.Row="1" Name="Grd_container">
             <Grid.Background>
-                <ImageBrush ImageSource="/Images/snow_background.png" Stretch="UniformToFill"/>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#1B1B3A" Offset="0"/>
+                    <GradientStop Color="#2B2B5F" Offset="1"/>
+                </LinearGradientBrush>
             </Grid.Background>
         </Grid>
 
