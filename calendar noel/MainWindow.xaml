@@ -87,6 +87,17 @@
                     </Setter>
                 </Style>
             </Grid.Resources>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="MessageText"
+                    FontSize="22"
+                    TextAlignment="Center"
+                    Margin="10"/>
+
+                <Image x:Name="ImageNoel"
+                    Width="300"
+                    Height="300"
+                    Margin="10"/>
+            </StackPanel>
 
             <Button Grid.Column="0" Style="{StaticResource ModernChristmasButton}" Name="BTN_carte_du_jour" Content="🎁 Carte du jour" Click="BTN_Carte_du_jour_Click"/>
             <Button Grid.Column="1" Style="{StaticResource ModernChristmasButton}" Name="BTN_Portevue" Content="📘 Porte-vue" Click="BTN_Portevue_Click"/>

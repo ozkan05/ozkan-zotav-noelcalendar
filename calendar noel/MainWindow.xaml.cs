@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,7 +27,7 @@ namespace calendar_noel
         // === FICHIERS ===
         private readonly string configPath = "config.txt";
         private readonly string messagesPath = "messages.txt";
-        private readonly string usedMessagesPath = "used.txt";
+        private readonly string usedMessagesPath = "historique.txt";
         private readonly string imagesFolder = "Images";
         private MediaPlayer player  = new MediaPlayer();
 
@@ -56,10 +57,27 @@ namespace calendar_noel
 
             StartSnow();
             StartGarlands();
-            AddCandles();
-            AddTree3D();
             AddGlowToButtons();
-            
+
+            // Vérification null / gestion d'erreur lors du chargement des ressources embarquées
+            try
+            {
+                var msgsResource = ChargerMessagesDepuisResource();
+                // Si nécessaire, intégrer msgsResource au comportement existant ici.
+                // On ne modifie pas l'état global si la structure MessageNoel diffère.
+            }
+            catch (Exception ex)
+            {
+                // Journaliser et prévenir l'utilisateur sans planter l'application
+                MessageBox.Show(
+                    $"Erreur lors du chargement des messages embarqués : {ex.Message}",
+                    "Chargement Resources",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+            }
+
+            ChargerMessageDuJour();
+
         }
 
         // ================= CONFIG =================
@@ -274,42 +292,6 @@ namespace calendar_noel
             garlandTimer.Start();
         }
 
-        // ================= BOUGIES =================
-        private void AddCandles()
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                Ellipse e = new Ellipse
-                {
-                    Width = 20,
-                    Height = 20,
-                    Fill = Brushes.Orange,
-                    Opacity = 0.7
-                };
-
-                Canvas.SetLeft(e, 60 + i * 40);
-                Canvas.SetTop(e, 20);
-                SnowCanvas.Children.Add(e);
-            }
-        }
-
-        // ================= SAPIN 3D =================
-        private void AddTree3D()
-        {
-            Polygon p = new Polygon
-            {
-                Points = new PointCollection
-                {
-                    new Point(100, 220),
-                    new Point(160, 120),
-                    new Point(220, 220)
-                },
-                Fill = Brushes.Green
-            };
-
-            SnowCanvas.Children.Add(p);
-        }
-
         // ================= GLOW BOUTONS =================
         private void AddGlowToButtons()
         {
@@ -373,7 +355,116 @@ namespace calendar_noel
         private void BTN_Info_Click(object sender, RoutedEventArgs e)
         {
             AnimateTransition();
-            MessageBox.Show("❄ Créé par Ozkan - Calendrier de Noël 🎄");
+            MessageBox.Show("❄ Créé par Ozkan & Zotav - Calendrier de Noël 🎄");
+        }
+        public List<MessageNoel> ChargerMessagesDepuisResource()
+        {
+            var messages = new List<MessageNoel>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // chercher le nom réel de la ressource
+            var ressources = assembly.GetManifestResourceNames();
+            var resourceName = ressources
+                .FirstOrDefault(n => n.EndsWith("messages.txt", StringComparison.OrdinalIgnoreCase));
+
+            if (resourceName == null)
+            {
+                // lève une erreur claire ou journalise les ressources disponibles pour débogage
+                throw new InvalidOperationException(
+                    $"Ressource embarquée 'messages.txt' introuvable. Ressources disponibles: {string.Join(", ", ressources)}");
+            }
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null)
+                    throw new InvalidOperationException($"Impossible d'ouvrir la ressource '{resourceName}'.");
+
+                using (var reader = new StreamReader(stream))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        var ligne = reader.ReadLine();
+                        if (string.IsNullOrWhiteSpace(ligne)) continue;
+
+                        var parties = ligne.Split(new[] { '|' }, 2);
+                        var texte = parties.Length > 0 ? parties[0].Trim() : string.Empty;
+                        var image = parties.Length > 1 ? parties[1].Trim() : string.Empty;
+
+                        messages.Add(new MessageNoel(texte, image));
+                    }
+                }
+            }
+
+            return messages;
+        }
+        void ChargerMessageDuJour()
+        {
+            string messagesPath = "messages.txt";
+            string historiquePath = "historique.txt";
+
+            // 1. Charger tous les messages
+            var messages = File.ReadAllLines(messagesPath)
+                .Select(l => l.Split(new[] {'|'}, 2))
+                .Select(parts => new
+                {
+                    Texte = parts.Length > 0 ? parts[0].Trim() : string.Empty,
+                    Image = parts.Length > 1 ? parts[1].Trim() : "default.png"
+                })
+                .Where(m => !string.IsNullOrEmpty(m.Texte))
+                .ToList();
+
+            // 2. Charger l'historique (messages déjà utilisés)
+            var utilises = File.Exists(historiquePath)
+                ? File.ReadAllLines(historiquePath)
+                    .Select(l =>
+                    {
+                        var p = l.Split(new[] {'|'}, 3);
+                        return p.Length > 1 ? p[1].Trim() : string.Empty;
+                    })
+                    .Where(s => !string.IsNullOrEmpty(s))
+                    .ToHashSet()
+                : new HashSet<string>();
+
+            // 3. Filtrer les messages disponibles
+            var disponibles = messages
+                .Where(m => !utilises.Contains(m.Texte))
+                .ToList();
+
+            if (disponibles.Count == 0)
+            {
+                MessageText.Text = "Tous les messages ont été utilisés 🎄";
+                return;
+            }
+
+            // 4. Tirage aléatoire
+            Random rnd = new Random();
+            var choisi = disponibles[rnd.Next(disponibles.Count)];
+
+            // 5. Affichage
+            MessageText.Text = choisi.Texte;
+            string imagePath = System.IO.Path.Combine(
+    AppDomain.CurrentDomain.BaseDirectory,
+    "Images",
+    choisi.Image
+);
+
+            if (File.Exists(imagePath))
+            {
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(imagePath, UriKind.Absolute);
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+
+                ImageNoel.Source = bitmap;
+            }
+            else
+            {
+                MessageBox.Show($"Image introuvable : {choisi.Image}");
+            }
+            // 6. Sauvegarde dans l’historique
+            string ligne = $"{DateTime.Today:yyyy-MM-dd} | {choisi.Texte} | {choisi.Image}";
+            File.AppendAllText(historiquePath, ligne + Environment.NewLine);
         }
     }
 }
