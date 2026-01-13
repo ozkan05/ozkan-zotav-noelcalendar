@@ -1,4 +1,5 @@
-﻿using System;
+﻿using calendar_noel.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -349,7 +350,12 @@ namespace calendar_noel
         private void BTN_Calendrier_Click(object sender, RoutedEventArgs e)
         {
             AnimateTransition();
-            MessageBox.Show("📅 Calendrier interactif bientôt !");
+         
+            var calendarwindow= new CalendarWindow();
+            calendarwindow.Show();
+            this.Close();
+
+
         }
 
         private void BTN_Info_Click(object sender, RoutedEventArgs e)

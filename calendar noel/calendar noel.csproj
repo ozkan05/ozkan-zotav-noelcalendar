@@ -56,14 +56,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="MessageNoel.cs" />
-    <Compile Include="Views\calendrier.xaml.cs">
-      <DependentUpon>calendrier.xaml</DependentUpon>
+    <Compile Include="Views\CalendarWindow.xaml.cs">
+      <DependentUpon>CalendarWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\carte_du_jour.xaml.cs">
       <DependentUpon>carte_du_jour.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\info.xaml.cs">
       <DependentUpon>info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JourWindow.xaml.cs">
+      <DependentUpon>JourWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\porte-vue_image.xaml.cs">
       <DependentUpon>porte-vue_image.xaml</DependentUpon>
@@ -83,7 +86,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\calendrier.xaml">
+    <Page Include="Views\CalendarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\JourWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

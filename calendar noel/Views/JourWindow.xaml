@@ -1,0 +1,9 @@
+﻿<Window x:Class="calendar_noel.Views.JourWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="JourWindow" Height="350" Width="525">
+    <Grid>
+        <Image x:Name="CarteImage" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="200"/>
+        <TextBlock x:Name="CarteTexte" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" FontSize="16"/>
+    </Grid>
+</Window>
