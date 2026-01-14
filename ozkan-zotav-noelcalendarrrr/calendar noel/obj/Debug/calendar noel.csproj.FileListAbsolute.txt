@@ -1,0 +1,29 @@
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar noel.csproj.AssemblyReference.cache
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\MainWindow.baml
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\JourWindow.baml
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\MainWindow.g.cs
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\CalendarWindow.g.cs
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\carte_du_jour.g.cs
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\info.g.cs
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\JourWindow.g.cs
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\porte-vue_image.g.cs
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\prenom.g.cs
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\App.g.cs
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar noel_Content.g.cs
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar noel_MarkupCompile.cache
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar noel_MarkupCompile.lref
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\bin\Debug\Music\letitsnow.mp3
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\bin\Debug\calendar noel.exe.config
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\bin\Debug\calendar noel.exe
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\bin\Debug\calendar noel.pdb
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\CalendarWindow.baml
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\carte_du_jour.baml
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\info.baml
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\porte-vue_image.baml
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\Views\prenom.baml
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar noel.g.resources
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar_noel.Properties.Resources.resources
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar noel.csproj.GenerateResource.cache
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar noel.csproj.CoreCompileInputs.cache
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar noel.exe
+C:\Users\Utilisateur\Source\Repos\ozkan-zotav-noelcalendarrrr\calendar noel\obj\Debug\calendar noel.pdb
