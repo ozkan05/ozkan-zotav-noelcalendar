@@ -29,14 +29,34 @@ namespace calendar_noel.Views
         private void InitialiserCartes()
         {
             // Empêche la réinitialisation (évite la répétition)
-            if (imagesCartes != null && textesCartes != null)
-                return;
+            //if (imagesCartes != null && textesCartes != null)
+                //return;
 
             // 🔹 LISTE DES IMAGES (pack URI WPF)
             imagesCartes = new List<string>
             {
-                "pack://application:,,,/assets/cartes/cartetest.png",
-                "pack://application:,,,/assets/cartes/cartetest2.png",
+                "pack://application:,,,/Images/cartetest.png",
+                "pack://application:,,,/Images/cartetest2.png",
+                "pack://application:,,,/Images/bougie.png",
+                "pack://application:,,,/Images/chocolat.png",
+                "pack://application:,,,/Images/cadeau.png",
+                "pack://application:,,,/Images/coeur.png",
+                "pack://application:,,,/Images/decoration.png",
+                "pack://application:,,,/Images/entraide.png",
+                "pack://application:,,,/Images/etoile.png",
+                "pack://application:,,,/Images/neige.png",
+                "pack://application:,,,/Images/sapin.png",
+                "pack://application:,,,/Images/film.png",
+                "pack://application:,,,/Images/instant.png",
+                "pack://application:,,,/Images/joie.png",
+                "pack://application:,,,/Images/musique.png",
+                "pack://application:,,,/Images/lettre.png",
+                "pack://application:,,,/Images/liste.png",
+                "pack://application:,,,/Images/message.png",
+                "pack://application:,,,/Images/sourire.png",
+                "pack://application:,,,/Images/surprise.png",
+
+
                 // ➜ ajoute autant d’images que tu veux
             };
         }

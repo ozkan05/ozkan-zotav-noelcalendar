@@ -24,7 +24,7 @@ namespace calendar_noel.Views
             InitializeComponent();
             // Chargement de l’image depuis les ressources WPF
             CarteImage.Source = new BitmapImage(
-                new Uri(imageUri, UriKind.Relative));
+                new Uri(imageUri, UriKind.Absolute));
 
             // Le texte a été retiré de la fenêtre (plus d'affichage de texte)
             // CarteTexte remains in XAML but is not used.

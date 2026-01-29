@@ -127,7 +127,15 @@ namespace calendar_noel
                     "Fais une bonne action 🎁",
                     "Regarde un film de Noël 🎬",
                     "Bois un chocolat chaud ☕",
-                    "Offre un cadeau surprise 🎉"
+                    "Offre un cadeau surprise 🎉",
+                    "Décore ta maison avec des lumières ✨",
+                    "Écris une lettre au Père Noël ✍️",
+                    "Chante une chanson de Noël 🎶",
+                    "Prépare des biscuits de Noël 🍪",
+                    "Passe du temps avec ta famille 👨‍👩‍👧‍👦",
+
+
+
                 });
             }
 
